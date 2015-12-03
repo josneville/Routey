@@ -1,0 +1,15 @@
+/* Empty. Add your own CSS if you like */
+
+body, .pane {
+  background-color: #34495e;
+}
+.logo {
+  width: 100%;
+  height: auto;
+}
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}

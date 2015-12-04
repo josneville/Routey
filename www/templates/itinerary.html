@@ -1,10 +1,18 @@
-<div id='map'></div>
-<script>
-mapboxgl.accessToken = 'pk.eyJ1Ijoiam9zbmV2aWxsZSIsImEiOiJjaWhvanAyeTgwY3I4dGhqNzRwM3RsNGF6In0.KwnYEvkMAYP9dtS8lnqHiQ';
-var map = new mapboxgl.Map({
-    container: 'map', // container id
-    style: 'mapbox://styles/mapbox/streets-v8', //stylesheet location
-    center: [-74.50, 40], // starting position
-    zoom: 9 // starting zoom
-});
-</script>
+<div class="bar bar-header bar-stable" style="height: 65px">
+  <div class="row">
+    <div class="col col-25">
+    </div>
+    <div class="col col-50" style="text-align: center; justify-content: center">
+      <h3>Itinerary</h3>
+    </div>
+    <div class="col col-25">
+    </div>
+  </div>
+</div>
+<ui-gmap-google-map center='map.center' zoom='map.zoom' control='map.control'>
+  <ui-gmap-marker ng-repeat="marker in markers" coords="marker.coords" idkey="marker.id">
+  </ui-gmap-marker>
+</ui-gmap-google-map>
+<div class="row">
+  <button class="button button-block button-balanced">Show Details</button>
+</div>

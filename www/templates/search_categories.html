@@ -10,37 +10,13 @@
   </div>
 </div>
 <div class="row" style="margin-top: 70px">
-  <div class="col">
+  <div class="col" style="height: 400px; overflow: scroll">
     <ul class="list">
-      <li class="item item-checkbox">
+      <li class="item item-checkbox" ng-repeat="category in categories">
         <label class="checkbox">
-          <input type="checkbox">
+          <input type="checkbox" ng-model="category.checked" checked>
         </label>
-        Theatre
-      </li>
-      <li class="item item-checkbox">
-        <label class="checkbox">
-          <input type="checkbox">
-        </label>
-        Parks
-      </li>
-      <li class="item item-checkbox">
-        <label class="checkbox">
-          <input type="checkbox">
-        </label>
-        Museums
-      </li>
-      <li class="item item-checkbox">
-        <label class="checkbox">
-          <input type="checkbox">
-        </label>
-        Food
-      </li>
-      <li class="item item-checkbox">
-        <label class="checkbox">
-          <input type="checkbox">
-        </label>
-        Attractions
+        {{category.name}}
       </li>
     </ul>
   </div>

@@ -6,6 +6,9 @@
       <h3>Itinerary</h3>
     </div>
     <div class="col col-25">
+      <button class="button button-balanced" ng-click="goToOptions()">
+        Options
+      </button>
     </div>
   </div>
 </div>
@@ -14,5 +17,24 @@
   </ui-gmap-marker>
 </ui-gmap-google-map>
 <div class="row">
-  <button class="button button-block button-balanced">Show Details</button>
+  <button class="button button-block button-balanced" ng-click="modal.show()">Show Details</button>
 </div>
+<script id="modal.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar>
+      <h1 class="title">Route Details</h1>
+      <div class="button button-clear" ng-click="modal.hide()">
+        <span class="icon ion-close"></span>
+      </div>
+    </ion-header-bar>
+    <ion-content has-header="true" padding="true">
+      <div class="list">
+        <a class="item item-thumbnail-left" href="#" ng-repeat="location in itinerary.locations">
+          <img ng-src="{{location.image}}">
+          <h2>{{location.name}}</h2>
+          <p>Cost: ${{location.cost}} Time: {{location.time.hours}}Hr(s) {{location.time.minutes}} Min(s)</p>
+        </a>
+      </div>
+    </ion-content>
+  </ion-modal-view>
+</script>

@@ -5,7 +5,6 @@ angular.module('starter.controllers', [])
 		location: "201 N Goodwin Ave, Urbana, IL 61801",
 		time: {}
 	}
-	$scope.itineraries = []
 	$scope.itinerary = {}
 })
 
@@ -36,6 +35,7 @@ angular.module('starter.controllers', [])
 		scope: $scope,
 		animation: 'slide-in-up'
 	});
+	$scope.itineraries = []
 	$scope.locations = MainData.locations.filter(function (location) {
 		for (var i = 0; i < $scope.options.categories.length; i++) {
 			if ($scope.options.categories[i].name == location.category) {
@@ -127,9 +127,15 @@ angular.module('starter.controllers', [])
 	}
 })
 
-.controller('itinerary', function ($scope, uiGmapGoogleMapApi) {
+.controller('itinerary', function ($scope, $state, $ionicModal, uiGmapGoogleMapApi) {
+	$ionicModal.fromTemplateUrl('modal.html', function ($ionicModal) {
+		$scope.modal = $ionicModal;
+	}, {
+		scope: $scope,
+		animation: 'slide-in-up'
+	});
 	uiGmapGoogleMapApi.then(function (maps) {
-		$scope.markers = $scope.itinerary.locations
+		$scope.markers = angular.copy($scope.itinerary.locations)
 		var waypoints = []
 		for (var i = 0; i < $scope.markers.length; i++) {
 			waypoints.push({
@@ -261,4 +267,12 @@ angular.module('starter.controllers', [])
 		}
 		$scope.getDirections()
 	})
+
+	$scope.goToOptions = function(){
+		$state.go('options')
+	}
+})
+
+.controller('options', function($scope, $state){
+
 })
